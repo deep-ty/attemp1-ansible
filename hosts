@@ -1,0 +1,9 @@
+---
+[webservers]
+app[1:2].7aa1.internal
+
+[proxyservers]
+frontend1.7aa1.internal
+
+[dbs]
+appdb1.7aa1.internal
