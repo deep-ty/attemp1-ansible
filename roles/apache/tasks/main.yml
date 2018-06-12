@@ -6,6 +6,12 @@
     name: tomcat
     state: latest
 
+# To start Tomcat at linux boot
+- name: Start tomcat at Linux Boot
+  service:
+    name: tomcat
+    enabled: yes
+
 # To create a web dir ROOT
 - name: Create Tomcat Web Dir
   file:
@@ -17,11 +23,6 @@
   template:
     src: index.html.j2
     dest: "{{ tomcat_root_dir }}/index.html"
+    mode: 0644
   notify: restart tomcat
-
-# To start Tomcat at linux boot
-- name: Start tomcat at Linux Boot
-  service:
-    name: tomcat
-    enabled: yes
 

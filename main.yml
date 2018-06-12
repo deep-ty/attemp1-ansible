@@ -17,9 +17,9 @@
   - name: Install Repos
     include_role:
       name: common
+    tags:
+      - setup_common
     
-#command: "yum update"
-
 # To Install HAProxy
 - hosts: proxyservers
   gather_facts: false
@@ -33,7 +33,7 @@
       - install_haproxy
 
 # To Install Tomcat
-- hosts: webservers
+- hosts: appservers
   gather_facts: false
   become: true
   become_user: ec2-user

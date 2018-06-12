@@ -1,5 +1,4 @@
----
-[webservers]
+[appservers]
 app[1:2].7aa1.internal
 
 [proxyservers]
