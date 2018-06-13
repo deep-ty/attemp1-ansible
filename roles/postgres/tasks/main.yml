@@ -1,12 +1,15 @@
 ---
 # A role to Install PostgreSQL
 # To Check if PostgreSQL is already installed.
-- name: Find pg_hba.conf
-  find:
-    paths: /opt/PostgreSQL
-    patterns: "pg_hba.conf"
-    recurse: yes
-  register: file_found
+#- name: Find pg_hba.conf
+#  find:
+#    paths: /opt/PostgreSQL
+#    patterns: "test.txt"
+#    recurse: yes
+#  register: file_found
+
+#- name: Debug log
+#  debug: var=file_found
 
 #- name: Check if PostgreSQL already started
 #  stat:
@@ -15,7 +18,11 @@
 
 # To Install PostgreSQL
 - name: Install available PostgreSQL
-  command: "yum install -y postgresql-server"
+  yum:
+    name: postgresql-server
+    state: latest
+
+#  command: "yum install -y postgresql-server"
 #  when: file_found.files[0] != ""
 #  when: stat_result.stat.exists == True
 
@@ -25,3 +32,4 @@
     name: postgresql
     enabled: yes
   notify: "restart postgresql"
+
