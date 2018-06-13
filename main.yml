@@ -19,6 +19,19 @@
       name: common
     tags:
       - setup_common
+
+# To Install Postgres
+- hosts: dbs
+  gather_facts: false
+  become: true
+#  become_user: ec2-user
+  tasks:
+  - name: Install Postgres
+    include_role:
+      name: postgres
+    tags:
+      - install_postgres
+
     
 # To Install HAProxy
 - hosts: proxyservers
